@@ -1,0 +1,10 @@
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/bin/Debug/netcoreapp1.1/webservices.deps.json
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/bin/Debug/netcoreapp1.1/webservices.runtimeconfig.json
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/bin/Debug/netcoreapp1.1/webservices.runtimeconfig.dev.json
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/bin/Debug/netcoreapp1.1/webservices.dll
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/bin/Debug/netcoreapp1.1/webservices.pdb
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/obj/Debug/netcoreapp1.1/webservices.csprojResolveAssemblyReference.cache
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/obj/Debug/netcoreapp1.1/webservices.csproj.CoreCompileInputs.cache
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/obj/Debug/netcoreapp1.1/webservices.AssemblyInfo.cs
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/obj/Debug/netcoreapp1.1/webservices.dll
+/Users/benjamenalford/Desktop/TCCPApp/TCCP/webservices/obj/Debug/netcoreapp1.1/webservices.pdb
