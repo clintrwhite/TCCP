@@ -1,0 +1,40 @@
+<div id="createUser">
+    <h1> Create User</h1>
+    <div>
+        <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+
+            <label class="center-block">First Name:
+      <input class="form-control" formControlName="firstName" >
+     
+    </label>
+            <label class="center-block">Last Name:
+      <input class="form-control" formControlName="lastName">
+    </label>
+            <label class="center-block">Email:
+      <input class="form-control" formControlName="email">
+    </label>
+            <label class="center-block">Birth Date:
+      <input class="form-control" formControlName="birthDate">
+    </label>
+            <label class="center-block">Street Address:
+      <input class="form-control" formControlName="streetAddress">
+    </label>
+            <label class="center-block">City:
+      <input class="form-control" formControlName="city">
+    </label>
+            <label class="center-block">State:
+      <input class="form-control" formControlName="state">
+    </label>
+            <label class="center-block">Zip:
+      <input class="form-control" formControlName="zipCode">
+    </label>
+
+
+            <button (click)="createUser()" type="button">Create User</button>
+        </form>
+    </div>
+    <div *ngIf="formErrors" class="alert alert-danger">
+
+        {{ formErrors.firstName }} {{ formErrors.lastName }}{{ formErrors.email }}
+    </div>
+</div>
