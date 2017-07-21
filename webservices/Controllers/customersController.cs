@@ -6,24 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace webservices.Controllers
 {
-    [Route("api/s")]
-    public class s : Controller
+    [Route("api/customers")]
+    public class customersController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET api/test
         [HttpGet]
         public IEnumerable<Customer> Get()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            db.test();
+            //db.test();
 
             return db.Customers.ToList(); ;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Customer Get(int id)
         {
-            return "value";
+
+            return db.Customers.FirstOrDefault(e => e.id == id);
+
         }
 
         // POST api/values
