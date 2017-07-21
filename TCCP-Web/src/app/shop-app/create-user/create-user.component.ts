@@ -26,13 +26,9 @@ export class CreateUserComponent implements OnInit {
       zipCode: ''
 
 
-
-
     });
     this.createUserForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
-
-
   }
 
   ngOnInit() {
@@ -40,6 +36,7 @@ export class CreateUserComponent implements OnInit {
   }
   createUser() {
     console.log("create User");
+    console.log(this.createUserForm.controls);
   }
   onValueChanged(data?: any) {
     if (!this.createUserForm) { return; }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,11 +10,10 @@ import { FormBuilder,FormControl, FormGroup } from '@angular/forms';
 
 export class SignInComponent implements OnInit {
 
-    signInForm = new FormGroup ({
+  signInForm = new FormGroup({
     name: new FormControl()
-    });
-  
-  
+  });
+
   constructor() { }
 
   ngOnInit() {
