@@ -30,7 +30,7 @@ namespace webservices
             modelBuilder.Entity<Customer>(entity =>
             {
                 // entity.HasOne(d => d.firstName);
-                Console.Out.WriteLineAsync("entity");
+                Console.Out.WriteLineAsync("entity model built");
                 //.WithMany(p => p.Post)
                 // .HasForeignKey(d => d.BlogId);
             });
