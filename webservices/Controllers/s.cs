@@ -6,17 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace webservices.Controllers
 {
-    [Route("api/[controller]")]
-    public class SignInController : Controller
+    [Route("api/s")]
+    public class s : Controller
     {
         // GET api/test
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Customer> Get()
         {
             ApplicationDbContext db = new ApplicationDbContext();
             db.test();
 
-            return new string[] { "value1", "value2" };
+            return db.Customers.ToList(); ;
         }
 
         // GET api/values/5

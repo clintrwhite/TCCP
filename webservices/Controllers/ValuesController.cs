@@ -14,7 +14,7 @@ namespace webservices.Controllers
         public IEnumerable<string> Get()
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            //db.test();
+            db.test();
 
             return new string[] { "value1", "value2" };
         }

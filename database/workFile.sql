@@ -1,6 +1,6 @@
 select *
 from customers
 GO
-select *
-from signInLog
-GO
+-- select *
+-- from signInLog
+-- GO

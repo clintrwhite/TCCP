@@ -5,10 +5,10 @@ namespace webservices
     public class SignInLog
     {
 
-        public SignInLog()
-        {
-            var Log = new HashSet<Customer>();
-        }
+        // public SignInLog()
+        // {
+        //     var Log = new HashSet<Customer>();
+        // }
 
         public virtual ICollection<Customer> Customer { get; set; }
         public int id { get; set; }

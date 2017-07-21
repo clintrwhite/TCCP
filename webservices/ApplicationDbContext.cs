@@ -7,7 +7,7 @@ namespace webservices
     public partial class ApplicationDbContext : DbContext
     {
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<SignInLog> SignInLog { get; set; }
+        // public virtual DbSet<SignInLog> SignInLog { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,15 +17,15 @@ namespace webservices
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>(entity =>
-            {
-                entity.Property(e => e.id).IsRequired();
-            });
+            // modelBuilder.Entity<Customer>(entity =>
+            // {
+            //     entity.Property(e => e.id).IsRequired();
+            // });
 
-            modelBuilder.Entity<SignInLog>(entity =>
-                      {
-                          entity.Property(e => e.id).IsRequired();
-                      });
+            // modelBuilder.Entity<SignInLog>(entity =>
+            //           {
+            //               entity.Property(e => e.id).IsRequired();
+            //           });
 
             modelBuilder.Entity<Customer>(entity =>
             {
@@ -37,8 +37,11 @@ namespace webservices
         }
         public void test()
         {
+            Customer x = new Customer();
+            x.firstName = "test";
+            x.lastName = "test2";
 
-            var c = this.Customers.Add(new Customer());
+            var c = this.Customers.Add(x);
 
             c.Context.SaveChanges();
 
