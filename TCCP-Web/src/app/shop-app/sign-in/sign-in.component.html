@@ -4,13 +4,18 @@
         <form [formGroup]="signInForm" novalidate>
             <div class="form-group">
                 <label class="center-block">Name:
-      <input class="form-control" formControlName="name">
+      <input class="form-control" formControlName="name" #customerSearch id="search-box" >
     </label>
             </div>
         </form>
     </div>
     <div id="userSearchResults">
+        <ul *ngFor="let cust of customers ">
+            <li>{{cust}}
+            </li>
+        </ul>
     </div>
+
 
 
 </div>

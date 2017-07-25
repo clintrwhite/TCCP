@@ -1,13 +1,16 @@
+import { observable } from 'rxjs/symbol/observable';
 import { Injectable } from '@angular/core';
 import { User } from '../shared/models/user';
 import { Headers, Http, HttpModule, Request, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopAppService {
 
   private apiURL = 'http://localhost:5000/api/';
   private headers = new Headers();
+
 
   constructor(private http: Http) { }
 
@@ -21,14 +24,13 @@ export class ShopAppService {
       params,
       options
     ).subscribe();
+  }
+
+  customerSearch(searchString: string): Observable<User[]> {
+    return this.http
+      .get(this.apiURL + 'customers' + `/?value=${searchString}`)
+      .map(response => response.json().data as User[]);
 
   }
-  // private http: HttpClient
-  // public createUser(user: User) {
-  //   console.log(user);
-  //   http.post('/api/items/add', user, {
 
-  //   })
-  //     .subscribe();
-  // }
 }
