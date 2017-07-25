@@ -29,6 +29,8 @@ namespace webservices
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //enable cors
+            services.AddCors();
             // Add framework services.
             services.AddMvc();
 
@@ -50,6 +52,11 @@ namespace webservices
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             app.UseWelcomePage("/");
+
+			app.UseCors(builder =>
+                        builder
+		                .AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
+	);
             app.UseMvc();
         }
     }

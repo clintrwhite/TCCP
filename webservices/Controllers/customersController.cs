@@ -25,9 +25,12 @@ namespace webservices.Controllers
 
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]string value)
+        public string Post([FromBody]Customer value)
         {
-            return value;
+            Console.WriteLine("posted");
+            db.Customers.Add(value);
+            db.SaveChanges();
+            return value.firstName;
         }
 
         // PUT api/values/5

@@ -1,3 +1,4 @@
+import { ShopAppService } from '../shop-app.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
@@ -12,7 +13,7 @@ export class CreateUserComponent implements OnInit {
 
   createUserForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private appService: ShopAppService) {
     this.createUserForm = this.formBuilder.group({
 
 
@@ -36,6 +37,7 @@ export class CreateUserComponent implements OnInit {
   }
   createUser() {
     console.log("create User");
+    this.appService.createUser(this.createUserForm.value);
     console.log(this.createUserForm.controls);
   }
   onValueChanged(data?: any) {
