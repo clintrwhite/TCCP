@@ -1,3 +1,4 @@
+import { DashboardComponent } from './shop-app/dashboard/dashboard.component';
 import { HttpModule } from '@angular/http';
 import { ShopAppService } from './shop-app/shop-app.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,9 @@ import { SignInComponent } from './shop-app/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './shop-app/create-user/create-user.component';
 
+
 const appRoutes: Routes = [
+  { path: '', component: DashboardComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'createUser', component: CreateUserComponent }
 
@@ -24,7 +27,8 @@ const appRoutes: Routes = [
     FooterComponent,
     ShopAppComponent,
     SignInComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
