@@ -1,11 +1,8 @@
 ﻿<Properties StartupConfiguration="{1729C1D1-C20C-4443-BDCC-567112B5107A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/customersController.cs">
     <Files>
       <File FileName="appsettings.json" Line="7" Column="1" />
-      <File FileName="Program.cs" Line="15" Column="1" />
-      <File FileName="Startup.cs" Line="58" Column="70" />
-      <File FileName="Controllers/ValuesController.cs" Line="1" Column="1" />
-      <File FileName="ApplicationDbContext.cs" Line="1" Column="1" />
+      <File FileName="Controllers/customersController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

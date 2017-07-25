@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace webservices.Controllers
 {
@@ -14,8 +15,17 @@ namespace webservices.Controllers
         [HttpGet]
         public IEnumerable<Customer> Get([FromQuery] string term)
         {
+
+            CustomerSearch x = JsonConvert.DeserializeObject<CustomerSearch>(term.ToLower());
+            Console.WriteLine(x.name);
             Console.WriteLine("term" + term);
-            return db.Customers.ToList(); ;
+
+            return db.Customers.Where(
+                e => e.firstName.ToLower().Contains(x.name) ||
+             e.lastName.ToLower().Contains(x.name) ||
+             (e.firstName.ToLower() + ' ' + e.lastName.ToLower()).Contains(x.name)
+
+            ).ToList();
         }
 
         [HttpGet("{id}")]
