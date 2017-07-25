@@ -28,7 +28,7 @@ export class ShopAppService {
 
   customerSearch(searchString: string): Observable<User[]> {
     return this.http
-      .get(this.apiURL + 'customers' + `/?value=${searchString}`)
+      .get(this.apiURL + 'customers' + `/?term=${JSON.stringify(searchString)}`)
       .map(response => response.json().data as User[]);
 
   }

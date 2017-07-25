@@ -12,8 +12,9 @@ namespace webservices.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         [HttpGet]
-        public IEnumerable<Customer> Get()
+        public IEnumerable<Customer> Get([FromQuery] string term)
         {
+            Console.WriteLine("term" + term);
             return db.Customers.ToList(); ;
         }
 
