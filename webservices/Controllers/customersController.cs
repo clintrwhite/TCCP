@@ -20,21 +20,21 @@ namespace webservices.Controllers
         [HttpGet("{id}")]
         public Customer Get(int id)
         {
-            return db.Customers.FirstOrDefault(e => e.id == id);
+            return db.Customers.FirstOrDefault(c => c.id == id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public string Post([FromBody]string value)
         {
-            //db.test();
+            return value;
         }
 
-        // // PUT api/values/5
-        // [HttpPut("{id}")]
-        // public void Put(int id, [FromBody]string value)
-        // {
-        // }
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
 
         // // DELETE api/values/5
         // [HttpDelete("{id}")]

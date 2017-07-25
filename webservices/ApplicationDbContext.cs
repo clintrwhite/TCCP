@@ -30,7 +30,7 @@ namespace webservices
             modelBuilder.Entity<Customer>(entity =>
             {
                 // entity.HasOne(d => d.firstName);
-                Console.Out.WriteLineAsync("entity model built");
+                //Console.Out.WriteLineAsync("entity model built");
                 //.WithMany(p => p.Post)
                 // .HasForeignKey(d => d.BlogId);
             });
@@ -46,6 +46,20 @@ namespace webservices
             c.Context.SaveChanges();
 
             Console.Out.WriteLineAsync("test out");
+        }
+        public Boolean createCustomer(string firstName, string lastName, string email, string birthDate, string address, string city, string state, string zipCode)
+        {
+            Customer c = new Customer() { firstName = firstName, lastName = lastName, email = email, streetAddress = address, zipCode = zipCode, city = city, state = state, birthDate = birthDate };
+
+            try
+            {
+                this.Customers.Add(c);
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 
