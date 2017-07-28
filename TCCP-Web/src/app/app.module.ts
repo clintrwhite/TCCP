@@ -2,7 +2,7 @@ import { DashboardComponent } from './shop-app/dashboard/dashboard.component';
 import { HttpModule } from '@angular/http';
 import { ShopAppService } from './shop-app/shop-app.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,14 +12,9 @@ import { SignInComponent } from './shop-app/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './shop-app/create-user/create-user.component';
 import { CustomerInfoComponent } from './shop-app/customer-info/customer-info.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
-const appRoutes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'signIn', component: SignInComponent },
-  { path: 'createUser', component: CreateUserComponent }
-
-];
 
 @NgModule({
   declarations: [
@@ -35,10 +30,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ), HttpModule
+    AppRoutingModule,
+    HttpModule
+
   ],
   providers: [ShopAppService, HttpModule],
   bootstrap: [AppComponent]
