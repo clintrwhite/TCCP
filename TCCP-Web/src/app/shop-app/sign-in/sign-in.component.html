@@ -5,15 +5,14 @@
       <input  #customerSearchBox id="search-box" (keyup)="search(customerSearchBox.value)" >
         </label>
         <div id="userSearchResults">
-            <div *ngIf="!customers">
-                no user found
-                <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
-            </div>
+
+            <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
+
             <div *ngIf="customers">
                 <h2>Select ID</h2>
 
                 <div class="grid grid-pad">
-                    <a *ngFor="let c of customers |async" [routerLink]="['/customerInfo', c.id]" class="col-1-4">
+                    <a *ngFor="let c of customers |async" [routerLink]="['/customerInfo/', c.id]" class="col-1-4">
                         <div class="">
                             <h4>{{c.id}} - {{c.firstName}} {{c.lastName}}</h4>
                         </div>

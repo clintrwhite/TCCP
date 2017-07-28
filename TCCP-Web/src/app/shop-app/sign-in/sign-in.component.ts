@@ -16,8 +16,7 @@ import { Subject } from 'rxjs/Subject';
 
 export class SignInComponent implements OnInit {
   customers: Observable<User[]>
-  users: User[]
-  test: Observable<any>
+
   private anyErrors: boolean;
   private finished: boolean;
   private searchTerms = new Subject<string>();
@@ -58,9 +57,9 @@ export class SignInComponent implements OnInit {
   }
 
 
-  customerSearch(searchString: string): Observable<User[]> {
-    return this.appService.customerSearch(searchString)///.map(response => response.json()
-  }
+  //customerSearch(searchString: string): Observable<User[]> {
+  //return this.appService.customerSearch(searchString)///.map(response => response.json()
+  //}
 
 
 

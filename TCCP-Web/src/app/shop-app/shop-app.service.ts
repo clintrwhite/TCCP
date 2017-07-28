@@ -33,4 +33,7 @@ export class ShopAppService {
       .map(response => response.json() as User[])
   }
 
+  getUser(id: number): Observable<User> {
+    return this.http.get(this.apiURL + 'customers/' + id).map(response => response.json() as User)
+  }
 }
