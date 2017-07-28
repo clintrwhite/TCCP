@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopAppService {
-
   private apiURL = 'http://localhost:5000/api/';
   private headers = new Headers();
 
@@ -24,13 +23,14 @@ export class ShopAppService {
       params,
       options
     ).subscribe();
+
+
   }
 
   customerSearch(searchString: string): Observable<User[]> {
     return this.http
-      .get(this.apiURL + 'customers' + `/?term=${JSON.stringify(searchString)}`)
-      .map(response => response.json().data as User[]);
-
+      .get(this.apiURL + 'customers' + `/?term=${searchString}`)
+      .map(response => response.json() as User[])
   }
 
 }

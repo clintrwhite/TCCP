@@ -11,6 +11,7 @@ import { ShopAppComponent } from './shop-app/shop-app.component';
 import { SignInComponent } from './shop-app/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './shop-app/create-user/create-user.component';
+import { CustomerInfoComponent } from './shop-app/customer-info/customer-info.component';
 
 
 const appRoutes: Routes = [
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     ShopAppComponent,
     SignInComponent,
     CreateUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    CustomerInfoComponent
   ],
   imports: [
     BrowserModule,

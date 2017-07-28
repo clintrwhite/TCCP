@@ -15,16 +15,14 @@ namespace webservices.Controllers
         [HttpGet]
         public IEnumerable<Customer> Get([FromQuery] string term)
         {
+            Console.WriteLine(term);
 
-            CustomerSearch x = JsonConvert.DeserializeObject<CustomerSearch>(term.ToLower());
-            Console.WriteLine(x.name);
             Console.WriteLine("term" + term);
 
             return db.Customers.Where(
-                e => e.firstName.ToLower().Contains(x.name) ||
-             e.lastName.ToLower().Contains(x.name) ||
-             (e.firstName.ToLower() + ' ' + e.lastName.ToLower()).Contains(x.name)
-
+                e => e.firstName.ToLower().Contains(term) ||
+                e.lastName.ToLower().Contains(term) ||
+                (e.firstName.ToLower() + ' ' + e.lastName.ToLower()).Contains(term)
             ).ToList();
         }
 

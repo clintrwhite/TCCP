@@ -1,21 +1,24 @@
 <div id="sign-in" class="container-fluid">
     <h1> Sign In</h1>
     <div id="userSearch">
-        <form [formGroup]="signInForm" novalidate>
-            <div class="form-group">
-                <label class="center-block">Name:
-      <input class="form-control" formControlName="name" #customerSearch id="search-box" >
-    </label>
+        <label class="center-block">Name:
+      <input  #customerSearchBox id="search-box" (keyup)="search(customerSearchBox.value)" >
+        </label>
+        <div id="userSearchResults">
+            <div *ngIf="!customers">
+                no user found
+                <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
             </div>
-        </form>
+            <div *ngIf="customers">
+                <h2>Select ID</h2>
+
+                <div class="grid grid-pad">
+                    <a *ngFor="let c of customers |async" [routerLink]="['/customerInfo', c.id]" class="col-1-4">
+                        <div class="">
+                            <h4>{{c.id}} - {{c.firstName}} {{c.lastName}}</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="userSearchResults">
-        <ul *ngFor="let cust of customers ">
-            <li>{{cust}}
-            </li>
-        </ul>
-    </div>
-
-
-
-</div>
