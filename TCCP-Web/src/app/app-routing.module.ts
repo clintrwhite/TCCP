@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     { path: 'signIn', component: SignInComponent },
     { path: 'signIn/:id', component: SignInComponent },
     { path: 'createUser', component: CreateUserComponent },
-    { path: 'customerInfo/:id', component: CustomerInfoComponent }
+    { path: 'user/:id/customerInfo', component: CustomerInfoComponent }
 
 ];
 
