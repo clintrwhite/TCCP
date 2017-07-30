@@ -25,7 +25,7 @@ namespace webservices
         }
 
         public IConfigurationRoot Configuration { get; }
-    
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -34,15 +34,9 @@ namespace webservices
             // Add framework services.
             services.AddMvc();
 
-
             //setupDB
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            // Add framework services
-            //var connection = @"Server=.\sqlexpress;Database=Cars;Trusted_Connection=True;";
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
 
         }
 
@@ -53,10 +47,11 @@ namespace webservices
             loggerFactory.AddDebug();
             app.UseWelcomePage("/");
 
-			app.UseCors(builder =>
+            app.UseCors(builder =>
                         builder
-		                .AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
-	);
+                        .AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
+    );
+
             app.UseMvc();
         }
     }

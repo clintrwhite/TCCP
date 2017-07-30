@@ -12,16 +12,22 @@ namespace webservices.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        // [Route("api/[controller]/getAll")]
+        [HttpGet("/api/getAllSignedIn")]
+        public IEnumerable<SignInLog> GetAllSignIn()
+        { return db.SignInLog.ToList(); }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<Customer> Get()
+        public IEnumerable<SignInLog> Get()
         {
-            //ApplicationDbContext db = new ApplicationDbContext();
-            //db.test();
-            // db.SignInLog.Add
-            return new Customer[] { };
+            return db.SignInLog.ToList();
         }
-
+        [HttpGet("/api/getUserSignInLog/{id}")]
+        public IEnumerable<SignInLog> GetAllSignIn(int id)
+        {
+            return db.SignInLog.Where(e => e.customerId == id);
+        }
         [HttpGet("{id}")]
         public string Get(int id)
         {
@@ -31,23 +37,22 @@ namespace webservices.Controllers
 
             if (currentCustomer != null)
             {
-
                 //check from signed in status
                 SignInLog x = db.SignInLog
                 .Where(e => e.customerId == currentCustomer.id
-                //&& e.inTime != e.outTime
                 )
                 .FirstOrDefault();
 
-
                 if (x != null && x.customerId != 0)
                 {
-                    Console.WriteLine("found signinlog" + x.id);
-
-                    Console.WriteLine(x.inTime.Date == DateTime.Now.Date);
+                    //user is signed in
                     if (x.inTime.Date == DateTime.Now.Date && x.outTime == x.inTime)
                     {
+                        //signing out
                         x.outTime = DateTime.Now;
+                        TimeSpan hoursEarned = x.outTime - x.inTime;
+                        Console.WriteLine(hoursEarned.Minutes);
+                        x.hoursEarned = hoursEarned.Minutes;
                         db.SignInLog.Update(x);
                         db.SaveChanges();
                         db.Dispose();
@@ -61,9 +66,7 @@ namespace webservices.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("sign In not null and cust doesn't exist");
-
-                    //create new
+                    //sign in
                     SignInLog s = new SignInLog()
                     {
                         customerId = currentCustomer.id,
@@ -85,27 +88,27 @@ namespace webservices.Controllers
 
         }
 
-        // POST api/values
-        [HttpPost]
-        public string Post([FromBody]SignInLog s)
-        {
-            Console.WriteLine("post from query");
+        // // POST api/values
+        // [HttpPost]
+        // public string Post([FromBody]SignInLog s)
+        // {
+        //     Console.WriteLine("post from query");
 
-            return s.customerId.ToString();
-        }
+        //     return s.customerId.ToString();
+        // }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public string Put(int id, [FromBody]string value)
-        {
-            return id.ToString();
+        // // PUT api/values/5
+        // [HttpPut("{id}")]
+        // public string Put(int id, [FromBody]string value)
+        // {
+        //     return id.ToString();
 
-        }
+        // }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        // // DELETE api/values/5
+        // [HttpDelete("{id}")]
+        // public void Delete(int id)
+        // {
+        // }
     }
 }

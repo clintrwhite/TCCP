@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './shop-app/create-user/create-user.component';
 import { CustomerInfoComponent } from './shop-app/customer-info/customer-info.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SigninLogComponent } from './shop-app/signin-log/signin-log.component';
 
 
 
@@ -25,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     SignInComponent,
     CreateUserComponent,
     DashboardComponent,
-    CustomerInfoComponent
+    CustomerInfoComponent,
+    SigninLogComponent
   ],
   imports: [
     BrowserModule,

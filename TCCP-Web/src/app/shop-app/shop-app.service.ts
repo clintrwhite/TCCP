@@ -1,3 +1,4 @@
+import { SignInLog } from '../shared/models/signInLog';
 import { APPIUM_PORT } from 'protractor/node_modules/webdriver-manager/built/lib/cmds';
 import undefined from 'symbol-observable';
 import { observable } from 'rxjs/symbol/observable';
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopAppService {
-  private apiURL = 'http://tccp.azurewebsites.net/api/';
-  //private apiURL = 'http://localhost:5000/api/';
+  // private apiURL = 'http://tccp.azurewebsites.net/api/';
+  private apiURL = 'http://localhost:5000/api/';
   private headers = new Headers();
 
 
@@ -35,11 +36,17 @@ export class ShopAppService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get(this.apiURL + 'customers/' + id).map(response => response.json() as User)
+    return this.http.get(this.apiURL + 'customers/' + id)
+      .map(response => response.json() as User)
   }
 
   signIn(user: User): Observable<string> {
-    console.log("sign In: " + user.id);
-    return this.http.get(this.apiURL + 'signIn/' + user.id).map(response => response.json());
+    return this.http.get(this.apiURL + 'signIn/' + user.id)
+      .map(response => response.json());
+  }
+
+  getSignInLog(userId: number): Observable<SignInLog[]> {
+    return this.http.get(this.apiURL + 'getUserSignInLog/' + userId)
+      .map(response => response.json() as SignInLog[]);
   }
 }

@@ -16,5 +16,6 @@ namespace webservices
         public int customerId { get; set; }
         public DateTime inTime { get; set; }
         public DateTime outTime { get; set; }
+        public int hoursEarned { get; set; }
     }
 }

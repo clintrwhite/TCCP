@@ -1,13 +1,23 @@
 <div class="container-fluid">
+    <div class="col-md-4">
+        <div class=" panel panel-default " *ngIf="user ">
+            <div class="panel-heading ">
+                Volenteer Info
+            </div>
+            <div class="panel-body ">
+                <dl>
+                    <dt>Volenteer Info </dt>
 
-    <dl>
-        <dt>Volenteer Info </dt>
+                    <dd>
+                        {{user.firstName}}
+                    </dd>
+                    <dd>{{user.lastName}} </dd>
+                    <dd> {{user.email}} </dd>
 
-        <dd>
-            {{user.firstName}}
-        </dd>
-        <dd>{{user.lastName}} </dd>
-        <dd> {{user.email}} </dd>
+                </dl>
+            </div>
 
-    </dl>
+        </div>
+    </div>
+    <app-signin-log user="user "></app-signin-log>
 </div>

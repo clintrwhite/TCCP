@@ -1,0 +1,23 @@
+<div class="col-md-6">
+    <div class="panel panel-default ">
+        <div class="panel-heading">
+            Hours Log
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Minutes Earned</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of signInLog">
+                        <td>{{s.inTime | date:'short'}}</td>
+                        <td>{{s.outTime | date:'short'}}</td>
+                        <td>{{s.hoursEarned}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
