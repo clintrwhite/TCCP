@@ -9,7 +9,7 @@
             <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
 
             <div *ngIf="customers">
-                <h2>Select ID</h2>
+                <h2>Select User</h2>
 
                 <div class="grid grid-pad">
                     <a *ngFor="let c of customers |async" [routerLink]="['/customerInfo/', c.id]" class="col-1-4">
