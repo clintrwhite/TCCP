@@ -49,4 +49,9 @@ export class ShopAppService {
     return this.http.get(this.apiURL + 'getUserSignInLog/' + userId)
       .map(response => response.json() as SignInLog[]);
   }
+
+  isUserSignedIn(userId: number): Observable<boolean> {
+    return this.http.get(this.apiURL + 'isUserSignedIn/' + userId)
+      .map(response => response.json());
+  }
 }

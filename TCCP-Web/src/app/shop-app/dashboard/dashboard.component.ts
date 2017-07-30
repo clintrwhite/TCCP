@@ -17,6 +17,7 @@ import { Location } from '@angular/common';
 export class DashboardComponent implements OnInit {
   @Input() user: User;
   signInResult: Observable<string>
+  userSignedIn: boolean
 
   constructor(private appService: ShopAppService, private http: Http, private route: ActivatedRoute, private location: Location) { }
 
@@ -25,10 +26,21 @@ export class DashboardComponent implements OnInit {
       .switchMap((params: ParamMap) => this.appService.getUser(+params.get('id')))
       .subscribe(u => this.user = u);
 
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.appService.isUserSignedIn(+params.get('id')))
+      .subscribe(s => this.userSignedIn = s);
+
+
   }
 
   signIn() {
     console.log("signing in");
     this.signInResult = this.appService.signIn(this.user);
+    this.userSignedIn = true;
+  }
+  signOut() {
+    console.log("signing out");
+    this.signInResult = this.appService.signIn(this.user);
+    this.userSignedIn = false;
   }
 }

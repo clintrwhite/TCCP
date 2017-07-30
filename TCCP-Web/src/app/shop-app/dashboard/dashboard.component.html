@@ -13,7 +13,8 @@
                         <p>Click here to sign in to earn shop volunteer time</p>
                         <p>
                             <!-- <a href="#" class="btn btn-primary" role="button" routerLink="/signIn" routerLinkActive="active">Sign In</a> -->
-                            <a class="btn btn-primary" role="button" (click)="signIn()">Sign In</a>
+                            <a *ngIf="!userSignedIn" class="btn btn-primary" role="button" (click)="signIn()">Sign In</a>
+                            <a *ngIf="userSignedIn" class="btn btn-primary" role="button" (click)="signOut()">Sign Out</a>
                         </p>
                     </div>
                 </div>

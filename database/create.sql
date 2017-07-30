@@ -14,15 +14,16 @@ GO
 --     CONSTRAINT [PK_Cust] PRIMARY KEY ([id])
 -- );
 -- GO
-CREATE TABLE [signInLog]
-(
-    [id] int NOT NULL IDENTITY,
-    [customerID] int NOT NULL,
-    [inTime] DATETIME NOT NULL,
-    [outTime] DATETIME NOT NULL,
-    CONSTRAINT [PK_SignInLog] PRIMARY KEY ([id])
-);
-GO
-
+-- CREATE TABLE [signInLog]
+-- (
+--     [id] int NOT NULL IDENTITY,
+--     [customerID] int NOT NULL,
+--     [inTime] DATETIME NOT NULL,
+--     [outTime] DATETIME NOT NULL,
+--     CONSTRAINT [PK_SignInLog] PRIMARY KEY ([id])
+-- );
+-- GO
+ALTER TABLE signInLog 
+    add hoursEarned int; 
 
 --cycleProject@tccpsql.database.windows.net

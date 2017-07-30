@@ -16,6 +16,12 @@ namespace webservices.Controllers
         [HttpGet("/api/getAllSignedIn")]
         public IEnumerable<SignInLog> GetAllSignIn()
         { return db.SignInLog.ToList(); }
+        [HttpGet("/api/isUserSignedIn/{id}")]
+        public bool isUserSignedIn(int id)
+        {
+            var x = db.SignInLog.Where(e => e.customerId == id).OrderBy(e => e.id).LastOrDefault();
+            return x.inTime.Date == DateTime.Now.Date && x.outTime == x.inTime;
+        }
 
         // GET api/values
         [HttpGet]
@@ -28,6 +34,7 @@ namespace webservices.Controllers
         {
             return db.SignInLog.Where(e => e.customerId == id);
         }
+
         [HttpGet("{id}")]
         public string Get(int id)
         {
