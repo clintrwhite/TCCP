@@ -42,12 +42,12 @@ namespace webservices.Controllers
 
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]Customer value)
+        public Customer Post([FromBody]Customer value)
         {
             Console.WriteLine("posted");
             db.Customers.Add(value);
             db.SaveChanges();
-            return value.firstName;
+            return value;
         }
 
         // PUT api/values/5

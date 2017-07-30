@@ -1,3 +1,4 @@
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Http } from '@angular/http';
 import { ShopAppService } from '../shop-app.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { Observable } from "rxjs/Observable";
 import { User } from "../../shared/models/user";
 import 'rxjs';
 import { Subject } from 'rxjs/Subject';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,12 +17,13 @@ import { Subject } from 'rxjs/Subject';
 
 
 export class SignInComponent implements OnInit {
+  @Input() user: User;
   customers: Observable<User[]>
 
   private anyErrors: boolean;
   private finished: boolean;
   private searchTerms = new Subject<string>();
-  constructor(private appService: ShopAppService, private http: Http) {
+  constructor(private appService: ShopAppService, private http: Http, private route: ActivatedRoute, private location: Location) {
 
   }
   search(term: string): void {
@@ -44,7 +47,7 @@ export class SignInComponent implements OnInit {
       });
 
     // let apiURL = 'http://localhost:5000/api/';
-    //
+
     // this.http
     //   .get(apiURL + 'customers' + `/?term=benjamen`).subscribe(e => console.log(e.json()))
 
@@ -55,7 +58,6 @@ export class SignInComponent implements OnInit {
     //   error => this.anyErrors = true,
     //   () => this.finished = true);
   }
-
 
   //customerSearch(searchString: string): Observable<User[]> {
   //return this.appService.customerSearch(searchString)///.map(response => response.json()

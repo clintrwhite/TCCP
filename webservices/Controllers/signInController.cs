@@ -51,11 +51,12 @@ namespace webservices.Controllers
                         db.SignInLog.Update(x);
                         db.SaveChanges();
                         db.Dispose();
-                        return "signedOut";
+                        return "2";
                     }
                     else
                     {
-                        return "signedInExists";
+                        //already signed In
+                        return "1";
                     }
                 }
                 else
@@ -73,13 +74,13 @@ namespace webservices.Controllers
                     db.SignInLog.Add(s);
                     db.SaveChanges();
                     db.Dispose();
-                    return "signedIn";
+                    return "1";
                 }
 
             }
             else
             {
-                return "NoUser";
+                return "0";
             }
 
         }

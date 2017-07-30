@@ -1,18 +1,19 @@
 <div id="sign-in" class="container-fluid">
-    <h1> Sign In</h1>
     <div id="userSearch">
+        <h2>Select User</h2>
         <label class="center-block">Name:
       <input  #customerSearchBox id="search-box" (keyup)="search(customerSearchBox.value)" >
         </label>
+        <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
+
         <div id="userSearchResults">
 
-            <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
 
-            <div *ngIf="customers">
-                <h2>Select User</h2>
+            <div [hidden]="!customers.length >0 | async">
 
                 <div class="grid grid-pad">
-                    <a *ngFor="let c of customers |async" [routerLink]="['/customerInfo/', c.id]" class="col-1-4">
+
+                    <a *ngFor="let c of customers |async" [routerLink]="['/user/', c.id]" class="col-1-4">
                         <div class="">
                             <h4>{{c.id}} - {{c.firstName}} {{c.lastName}}</h4>
                         </div>
@@ -20,4 +21,6 @@
                 </div>
             </div>
         </div>
+
     </div>
+</div>

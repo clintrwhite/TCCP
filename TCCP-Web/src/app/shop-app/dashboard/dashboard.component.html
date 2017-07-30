@@ -1,53 +1,59 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="" alt="">
-                <div class="caption">
-                    <h3>Sign In</h3>
-                    <p>Click here to sign in to earn shop volunteer time</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button" routerLink="/signIn" routerLinkActive="active">Sign In</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="" alt="">
-                <div class="caption">
-                    <h3>Register For Lights</h3>
-                    <p>Register for lights</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button" routerLink="/" routerLinkActive="active">Register For Lights</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="" alt="">
-                <div class="caption">
-                    <h3>Claim a Kids Bikes</h3>
-                    <p>Claim a Kids Bike</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button" routerLink="/" routerLinkActive="active">Claim a Kids Bike</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="" alt="">
-                <div class="caption">
-                    <h3>Redeem Shop Credits</h3>
-                    <p>Redeem Shop Credits</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button" routerLink="/" routerLinkActive="active">Redeem Shop Credits</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div *ngIf="user">
+    <h2>Welcome, {{user.firstName}} {{user.lastName}}</h2>
 
+    {{signInResult| async}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="" alt="">
+                    <div class="caption">
+                        <h3>Sign In</h3>
+                        <p>Click here to sign in to earn shop volunteer time</p>
+                        <p>
+                            <!-- <a href="#" class="btn btn-primary" role="button" routerLink="/signIn" routerLinkActive="active">Sign In</a> -->
+                            <a class="btn btn-primary" role="button" (click)="signIn()">Sign In</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="" alt="">
+                    <div class="caption">
+                        <h3>Register For Lights</h3>
+                        <p>Register for lights</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button" routerLink="/" routerLinkActive="active">Register For Lights</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="" alt="">
+                    <div class="caption">
+                        <h3>Claim a Kids Bikes</h3>
+                        <p>Claim a Kids Bike</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button" routerLink="/" routerLinkActive="active">Claim a Kids Bike</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="" alt="">
+                    <div class="caption">
+                        <h3>Redeem Shop Credits</h3>
+                        <p>Redeem Shop Credits</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button" routerLink="/" routerLinkActive="active">Redeem Shop Credits</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

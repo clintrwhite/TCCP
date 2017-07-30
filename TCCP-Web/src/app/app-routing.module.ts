@@ -8,8 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const appRoutes: Routes = [
-    { path: '', component: DashboardComponent },
+    { path: '', component: SignInComponent },
+    { path: 'user/:id', component: DashboardComponent },
     { path: 'signIn', component: SignInComponent },
+    { path: 'signIn/:id', component: SignInComponent },
     { path: 'createUser', component: CreateUserComponent },
     { path: 'customerInfo/:id', component: CustomerInfoComponent }
 

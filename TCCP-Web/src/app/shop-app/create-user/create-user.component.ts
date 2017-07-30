@@ -1,6 +1,10 @@
+import { observable } from 'rxjs/symbol/observable';
+import { User } from '../../shared/models/user';
+import { Observable } from 'rxjs/Rx';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShopAppService } from '../shop-app.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,13 +16,13 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@ang
 export class CreateUserComponent implements OnInit {
 
   createUserForm: FormGroup;
+  user: User;
 
-  constructor(private formBuilder: FormBuilder, private appService: ShopAppService) {
+  constructor(private formBuilder: FormBuilder, private appService: ShopAppService, private router: Router, private route: ActivatedRoute) {
     this.createUserForm = this.formBuilder.group({
 
-
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(24)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(24)]],
       email: ['', Validators.email],
       birthDate: [''],
       streetAddress: '',
@@ -26,19 +30,28 @@ export class CreateUserComponent implements OnInit {
       state: '',
       zipCode: ''
 
-
     });
-    this.createUserForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
+
+
   }
 
   ngOnInit() {
+    this.createUserForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
 
+    this.onValueChanged();
   }
   createUser() {
     console.log("create User");
-    this.appService.createUser(this.createUserForm.value);
-    console.log(this.createUserForm.controls);
+    if (this.createUserForm.valid) {
+      this.appService.createUser(this.createUserForm.value).map(e => e = this.user)
+        .subscribe(e => this.router.navigate(['/'], { relativeTo: this.route }));
+    } else {
+      this.createUserForm.updateValueAndValidity();
+    }
+
+    //.subscribe(e => this.router.navigate(['/user/', this.user.id], { relativeTo: this.route }));
+
   }
   onValueChanged(data?: any) {
     if (!this.createUserForm) { return; }
@@ -48,7 +61,7 @@ export class CreateUserComponent implements OnInit {
       // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
-
+      //console.log(field);
       if (control && control.dirty && !control.valid) {
         const messages = this.validationMessages[field];
 
@@ -68,13 +81,13 @@ export class CreateUserComponent implements OnInit {
   validationMessages = {
     'firstName': {
       'required': 'Name is required.',
-      'minlength': 'Name must be at least 4 characters long.',
-      'maxlength': 'Name cannot be more than 24 characters long.'
+      'minlength': 'First Name must be at least 2 characters long.',
+      'maxlength': 'First Name cannot be more than 24 characters long.'
     },
     'lastName': {
       'required': 'Last Name is required.',
-      'minlength': 'Name must be at least 4 characters long.',
-      'maxlength': 'Name cannot be more than 24 characters long.'
+      'minlength': 'Last Name must be at least 2 characters long.',
+      'maxlength': 'Last Name cannot be more than 24 characters long.'
     },
     'email': {
       'email': 'Invalid Email'
@@ -82,6 +95,7 @@ export class CreateUserComponent implements OnInit {
   };
   onSubmit() {
     console.log("submit");
+
   }
 }
 

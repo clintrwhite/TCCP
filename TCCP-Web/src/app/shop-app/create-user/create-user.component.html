@@ -5,13 +5,21 @@
 
             <label class="center-block">First Name:
       <input class="form-control" formControlName="firstName" >
-     
+            <div *ngIf="formErrors.firstName" class="alert alert-danger">
+            {{ formErrors.firstName }}
+    </div>
     </label>
             <label class="center-block">Last Name:
       <input class="form-control" formControlName="lastName">
+        <div *ngIf="formErrors.lastName" class="alert alert-danger">
+            {{ formErrors.lastName }}
+    </div>
     </label>
             <label class="center-block">Email:
       <input class="form-control" formControlName="email">
+        <div *ngIf="formErrors.email" class="alert alert-danger">
+            {{ formErrors.email }}
+    </div>
     </label>
             <label class="center-block">Birth Date:
       <input class="form-control" formControlName="birthDate">
@@ -32,9 +40,5 @@
 
             <button (click)="createUser()" type="button">Create User</button>
         </form>
-    </div>
-    <div *ngIf="formErrors" class="alert alert-danger">
-
-        {{ formErrors.firstName }} {{ formErrors.lastName }}{{ formErrors.email }}
     </div>
 </div>

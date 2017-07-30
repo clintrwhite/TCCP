@@ -1,3 +1,4 @@
+import undefined from 'symbol-observable';
 import { observable } from 'rxjs/symbol/observable';
 import { Injectable } from '@angular/core';
 import { User } from '../shared/models/user';
@@ -19,10 +20,10 @@ export class ShopAppService {
     var params = new URLSearchParams();
     params.set('value', '102');
     var options = new RequestOptions({ headers: this.headers, body: JSON.stringify(user) });
-    this.http.post(this.apiURL + 'customers',
+    return this.http.post(this.apiURL + 'customers',
       params,
       options
-    ).subscribe();
+    ).map(response => response.json() as User)
   }
 
   customerSearch(searchString: string): Observable<User[]> {
@@ -37,6 +38,6 @@ export class ShopAppService {
 
   signIn(user: User): Observable<string> {
     console.log("sign In: " + user.id);
-    return this.http.get(this.apiURL + 'customers/' + user.id).map(response => response.json());
+    return this.http.get(this.apiURL + 'signIn/' + user.id).map(response => response.json());
   }
 }
