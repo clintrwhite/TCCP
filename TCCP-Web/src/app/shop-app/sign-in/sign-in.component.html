@@ -1,24 +1,39 @@
 <div id="sign-in" class="container-fluid">
-    <div id="userSearch">
-        <h2>Select User</h2>
-        <label class="center-block">Name:
-      <input  #customerSearchBox id="search-box" (keyup)="search(customerSearchBox.value)" >
+    <div class="row">
+        <div id="userSearch " class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Search:</h3>
+                </div>
+                <div class="panel-body">
+
+                    <label class=" center-block ">Name:
+      <input  class="form-control"  #customerSearchBox id="search-box " (keyup)="search(customerSearchBox.value) " >
+                   
         </label>
-        <a href="#" class="btn btn-primary" role="button" routerLink="/createUser" routerLinkActive="active">Create New User</a>
+                </div>
+                <div class="panel-footer">
+                    <a href="# " class="btn btn-primary " role="button " routerLink="/createUser" routerLinkActive="active ">Create New User</a>
+                </div>
+            </div>
 
-        <div id="userSearchResults">
-            <div>
-
-                <div class="grid grid-pad">
-
-                    <a *ngFor="let c of customers |async" [routerLink]="['/user/', c.id]" class="col-1-4">
-                        <div class="">
-                            <h4>{{c.id}} - {{c.firstName}} {{c.lastName}}</h4>
+        </div>
+        <div id="userSearchResults " class="col-md-8 ">
+            <div class=" panel panel-default ">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select User</h3>
+                </div>
+                <div class="panel-body ">
+                    <a *ngFor=" let c of customers |async " [routerLink]="[ '/user/', c.id] " class="col-1-4 ">
+                        <div class="row">
+                            <div class="btn btn-default namesearch">
+                                <h4>{{c.id}} - {{c.firstName}} {{c.lastName}}</h4>
+                            </div>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
-
     </div>
+
 </div>

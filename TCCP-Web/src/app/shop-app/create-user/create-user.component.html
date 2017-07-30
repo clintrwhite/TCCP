@@ -1,44 +1,69 @@
 <div id="createUser">
-    <h1> Create User</h1>
-    <div>
-        <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <h1> Create User</h1>
+        <div>
 
-            <label class="center-block">First Name:
-      <input class="form-control" formControlName="firstName" >
-            <div *ngIf="formErrors.firstName" class="alert alert-danger">
-            {{ formErrors.firstName }}
-    </div>
+            <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+                <div class="col-md-6">
+                    <label class="center-block">First Name:
+                    <input class="form-control" formControlName="firstName">
+                    <div *ngIf="formErrors.firstName" class="alert alert-danger">
+                        {{ formErrors.firstName }}
+                    </div>
+                
+                </label>
+                </div>
+                <div class="col-md-6">
+                    <label class="center-block">Last Name:
+      <input class="form-control" formControlName="lastName" />
+
     </label>
-            <label class="center-block">Last Name:
-      <input class="form-control" formControlName="lastName">
-        <div *ngIf="formErrors.lastName" class="alert alert-danger">
-            {{ formErrors.lastName }}
-    </div>
-    </label>
-            <label class="center-block">Email:
+                    <div *ngIf="formErrors.lastName" class="alert alert-danger">
+                        {{ formErrors.lastName }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="center-block">Email:
       <input class="form-control" formControlName="email">
         <div *ngIf="formErrors.email" class="alert alert-danger">
             {{ formErrors.email }}
     </div>
     </label>
-            <label class="center-block">Birth Date:
+                </div>
+                <div class="col-md-6">
+                    <label class="center-block">Birth Date:
       <input class="form-control" formControlName="birthDate">
     </label>
-            <label class="center-block">Street Address:
+                </div>
+                <div class="col-md-6">
+                    <label class="center-block">Street Address:
       <input class="form-control" formControlName="streetAddress">
     </label>
-            <label class="center-block">City:
+                </div>
+                <div class="col-md-6">
+                    <label class="center-block">City:
       <input class="form-control" formControlName="city">
     </label>
-            <label class="center-block">State:
+                </div>
+                <div class="col-md-6">
+                    <label class="center-block">State:
       <input class="form-control" formControlName="state">
     </label>
-            <label class="center-block">Zip:
+                </div>
+                <div class="col-md-6">
+                    <label class="center-block">Zip:
       <input class="form-control" formControlName="zipCode">
             </label>
 
+                </div>
 
-            <button (click)="createUser()" type="button">Create User</button>
-        </form>
+                <div class="col-md-12">
+                    <button class="btn btn-primary bigutton" (click)="createUser()" type="button">Create User</button>
+                </div>
+
+            </form>
+
+        </div>
     </div>
 </div>
