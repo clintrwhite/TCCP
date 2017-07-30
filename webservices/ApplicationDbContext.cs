@@ -7,7 +7,7 @@ namespace webservices
     public partial class ApplicationDbContext : DbContext
     {
         public virtual DbSet<Customer> Customers { get; set; }
-        // public virtual DbSet<SignInLog> SignInLog { get; set; }
+        public virtual DbSet<SignInLog> SignInLog { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

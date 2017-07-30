@@ -15,15 +15,23 @@ namespace webservices.Controllers
         [HttpGet]
         public IEnumerable<Customer> Get([FromQuery] string term)
         {
-            Console.WriteLine(term);
+            // Console.WriteLine(term);
 
             Console.WriteLine("term" + term);
+            if (term == null)
+            {
+                Console.WriteLine("empty");
+                return db.Customers.ToList();
+            }
+            else
+            {
+                return db.Customers.Where(
+                                e => e.firstName.ToLower().Contains(term) ||
+                                e.lastName.ToLower().Contains(term) ||
+                                (e.firstName.ToLower() + ' ' + e.lastName.ToLower()).Contains(term)
+                            ).ToList();
+            }
 
-            return db.Customers.Where(
-                e => e.firstName.ToLower().Contains(term) ||
-                e.lastName.ToLower().Contains(term) ||
-                (e.firstName.ToLower() + ' ' + e.lastName.ToLower()).Contains(term)
-            ).ToList();
         }
 
         [HttpGet("{id}")]

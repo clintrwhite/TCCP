@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace webservices
 {
@@ -10,10 +11,10 @@ namespace webservices
         //     var Log = new HashSet<Customer>();
         // }
 
-        public virtual ICollection<Customer> Customer { get; set; }
+        // public virtual ICollection<Customer> Customer { get; set; }
         public int id { get; set; }
         public int customerId { get; set; }
-        public string startDate { get; set; }
-        public string endDate { get; set; }
+        public DateTime inTime { get; set; }
+        public DateTime outTime { get; set; }
     }
 }

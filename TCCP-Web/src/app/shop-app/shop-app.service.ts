@@ -23,8 +23,6 @@ export class ShopAppService {
       params,
       options
     ).subscribe();
-
-
   }
 
   customerSearch(searchString: string): Observable<User[]> {
@@ -35,5 +33,10 @@ export class ShopAppService {
 
   getUser(id: number): Observable<User> {
     return this.http.get(this.apiURL + 'customers/' + id).map(response => response.json() as User)
+  }
+
+  signIn(user: User): Observable<string> {
+    console.log("sign In: " + user.id);
+    return this.http.get(this.apiURL + 'customers/' + user.id).map(response => response.json());
   }
 }
