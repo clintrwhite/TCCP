@@ -1,8 +1,9 @@
-<div *ngIf="user">
-    <h2>Welcome, {{user.firstName}} {{user.lastName}}</h2>
-
-    {{signInResult| async}}
-    <div class="container-fluid">
+<div class="container-fluid">
+    <div *ngIf="user">
+        <h2 class="header">Welcome, {{user.firstName}} {{user.lastName}}</h2>
+        <div>
+            {{signInResult| async}}
+        </div>
         <div class="row">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
@@ -17,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 hidden">
                 <div class="thumbnail">
                     <img src="" alt="">
                     <div class="caption">
@@ -29,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 hidden">
                 <div class="thumbnail">
                     <img src="" alt="">
                     <div class="caption">
@@ -41,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 hidden">
                 <div class="thumbnail">
                     <img src="" alt="">
                     <div class="caption">
