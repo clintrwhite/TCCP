@@ -1,3 +1,4 @@
+import { APPIUM_PORT } from 'protractor/node_modules/webdriver-manager/built/lib/cmds';
 import undefined from 'symbol-observable';
 import { observable } from 'rxjs/symbol/observable';
 import { Injectable } from '@angular/core';
@@ -8,14 +9,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopAppService {
-  private apiURL = 'http://localhost:5000/api/';
+  private apiURL = 'http://tccp.azurewebsites.net/api/';
+  //private apiURL = 'http://localhost:5000/api/';
   private headers = new Headers();
 
 
   constructor(private http: Http) { }
 
   public createUser(user: User) {
-    console.log(this.headers.toJSON());
+    //  console.log(this.headers.toJSON());
     this.headers.append('Content-Type', 'application/json');
     var params = new URLSearchParams();
     params.set('value', '102');
