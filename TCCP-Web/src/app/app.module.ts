@@ -14,6 +14,11 @@ import { CreateUserComponent } from './shop-app/create-user/create-user.componen
 import { CustomerInfoComponent } from './shop-app/customer-info/customer-info.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SigninLogComponent } from './shop-app/signin-log/signin-log.component';
+import { AdminComponent } from './shop-app/admin/admin.component';
+import { RedeemHoursComponent } from './shop-app/redeem-hours/redeem-hours.component';
+import { ShopItemsComponent } from './shop-app/Admin/shop-items/shop-items.component';
+import { HoursEditComponent } from './shop-app/Admin/hours-edit/hours-edit.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -27,7 +32,12 @@ import { SigninLogComponent } from './shop-app/signin-log/signin-log.component';
     CreateUserComponent,
     DashboardComponent,
     CustomerInfoComponent,
-    SigninLogComponent
+    SigninLogComponent,
+    AdminComponent,
+    RedeemHoursComponent,
+    ShopItemsComponent,
+    HoursEditComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopAppService {
-  // private apiURL = 'http://tccp.azurewebsites.net/api/';
-  private apiURL = 'http://localhost:5000/api/';
+  private apiURL = 'http://tccp.azurewebsites.net/api/';
+  // private apiURL = 'http://localhost:5000/api/';
   private headers = new Headers();
 
 

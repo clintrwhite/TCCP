@@ -7,3 +7,4 @@ GO
 
 -- delete from customers where firstName = 'Benjamen'
 -- truncate table signInLog
+
