@@ -76,7 +76,7 @@ namespace webservices.dataLayer
                 // Console.Out.WriteLine(item.inTime);
                 if (item.hoursEarned == 0)
                 {
-                    Console.WriteLine("clearing old logins: " + s.Count);
+                    Console.WriteLine("x clearing old logins: " + s.Count);
                     signOutExpiredCustomerBySignInId(item.id);
                     return false;
                 }
@@ -162,7 +162,7 @@ namespace webservices.dataLayer
             if (IsCustomerSignedIn(id))
             {
 
-                // ShouldCustomerBeSignedOut(id);
+                ShouldCustomerBeSignedOut(id);
                 signOutCustomer(id);
 
                 return "1";
