@@ -23,7 +23,8 @@ GO
 --     CONSTRAINT [PK_SignInLog] PRIMARY KEY ([id])
 -- );
 -- GO
-ALTER TABLE signInLog 
-    add hoursEarned int; 
-
+-- ALTER TABLE signInLog
+--     add hoursEarned int;
+-- ALTER TABLE signInLog
+--     add signedIn bit;
 --cycleProject@tccpsql.database.windows.net

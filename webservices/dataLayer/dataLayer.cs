@@ -40,30 +40,44 @@ namespace webservices.dataLayer
 
         public bool IsCustomerSignedIn(int id)
         {
-            var x = db.SignInLog.Where(e => e.customerId == id).OrderBy(e => e.id).LastOrDefault();
+            var x = db.SignInLog.Where(e => e.customerId == id && e.inTime != e.outTime).LastOrDefault();
             if (x == null)
             {
+                Console.Out.WriteLine("not signed in");
                 return false;
             }
             else
             {
-                System.Console.WriteLine(DateTime.Now.Date.ToString() + ' ' + (x.outTime == x.inTime));
-                return x.inTime.Date == DateTime.Now.Date && x.outTime == x.inTime;
+                Console.WriteLine("signin");
+                return x.outTime.Date.TimeOfDay == x.inTime.Date.TimeOfDay;
 
             }
         }
-
-        public bool ShouldCustomerBeSignedOut(int id)
+        public void ExpireOldSignIns(int id)
         {
-            var s = db.SignInLog.Where(e => e.customerId == id && e.inTime != e.outTime).ToList();
+            var s = db.SignInLog.Where(e => e.customerId == id && e.inTime.Date != DateTime.Now.Date && e.inTime == e.outTime).ToList();
 
             foreach (var item in s)
             {
                 // Console.Out.WriteLine(item.inTime);
-                if (item.inTime.Date != System.DateTime.Now.Date)
+
+                Console.WriteLine("clearing old logins: " + s.Count);
+                signOutExpiredCustomerBySignInId(item.id);
+
+
+            }
+        }
+        public bool ShouldCustomerBeSignedOut(int id)
+        {
+            var s = db.SignInLog.Where(e => e.customerId == id && e.inTime.Date != DateTime.Now.Date).ToList();
+
+            foreach (var item in s)
+            {
+                // Console.Out.WriteLine(item.inTime);
+                if (item.hoursEarned == 0)
                 {
-                    Console.WriteLine("clearing old logins");
-                    signOutExpiredCustomerBySignInId(item.customerId, item.id);
+                    Console.WriteLine("clearing old logins: " + s.Count);
+                    signOutExpiredCustomerBySignInId(item.id);
                     return false;
                 }
                 else
@@ -73,15 +87,15 @@ namespace webservices.dataLayer
             }
             return false;
         }
-        public bool signOutExpiredCustomerBySignInId(int custID, int signinId)
+        public bool signOutExpiredCustomerBySignInId(int signinId)
         {
             SignInLog x = db.SignInLog
-                     .Where(e => e.customerId == custID && e.id == signinId
+                     .Where(e => e.id == signinId
                      )
                      .FirstOrDefault();
             x.outTime = x.inTime;
-            x.inTime = x.inTime.AddHours(1);
-            TimeSpan hoursEarned = x.outTime - x.inTime;
+            x.outTime = x.inTime.AddHours(1);
+            TimeSpan hoursEarned = x.outTime - x.inTime.AddHours(-1);
             Console.WriteLine(hoursEarned.Minutes);
             x.hoursEarned = hoursEarned.Minutes;
             db.SignInLog.Update(x);
@@ -109,15 +123,21 @@ namespace webservices.dataLayer
             //signing out
             SignInLog x = db.SignInLog
               .Where(e => e.customerId == id
-              && e.hoursEarned == 0
+              && e.inTime.Date == DateTime.Now.Date
+              && e.inTime.Date == e.outTime.Date
               )
               .FirstOrDefault();
-            x.outTime = DateTime.Now;
-            TimeSpan hoursEarned = x.outTime - x.inTime;
-            Console.WriteLine(hoursEarned.Minutes);
-            x.hoursEarned = hoursEarned.Minutes;
-            db.SignInLog.Update(x);
-            db.SaveChanges();
+            if (x != null)
+            {
+                Console.WriteLine("signing out");
+                x.outTime = DateTime.Now;
+                TimeSpan hoursEarned = x.outTime - x.inTime;
+                Console.WriteLine(hoursEarned.Minutes);
+                x.hoursEarned = hoursEarned.Minutes;
+                db.SignInLog.Update(x);
+                db.SaveChanges();
+            }
+
 
             return true;
         }
@@ -137,10 +157,12 @@ namespace webservices.dataLayer
         }
         public string SignInCustomer(int id)
         {
+            //recalc old logins
+            ExpireOldSignIns(id);
             if (IsCustomerSignedIn(id))
             {
 
-                ShouldCustomerBeSignedOut(id);
+                // ShouldCustomerBeSignedOut(id);
                 signOutCustomer(id);
 
                 return "1";
