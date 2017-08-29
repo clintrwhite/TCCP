@@ -35,32 +35,32 @@ namespace webservices
                 // .HasForeignKey(d => d.BlogId);
             });
         }
-        public void test()
-        {
-            Customer x = new Customer();
-            x.firstName = "test";
-            x.lastName = "test2";
+        //public void test()
+        //{
+        //    Customer x = new Customer();
+        //    x.firstName = "test";
+        //    x.lastName = "test2";
 
-            var c = this.Customers.Add(x);
+        //    var c = this.Customers.Add(x);
 
-            c.Context.SaveChanges();
+        //    c.Context.SaveChanges();
 
-            Console.Out.WriteLineAsync("test out");
-        }
-        public Boolean createCustomer(string firstName, string lastName, string email, string birthDate, string address, string city, string state, string zipCode)
-        {
-            Customer c = new Customer() { firstName = firstName, lastName = lastName, email = email, streetAddress = address, zipCode = zipCode, city = city, state = state, birthDate = birthDate };
+        //    Console.Out.WriteLineAsync("test out");
+        //}
+        //public Boolean createCustomer(string firstName, string lastName, string email, string birthDate, string address, string city, string state, string zipCode)
+        //{
+        //    Customer c = new Customer() { firstName = firstName, lastName = lastName, email = email, streetAddress = address, zipCode = zipCode, city = city, state = state, birthDate = birthDate };
 
-            try
-            {
-                this.Customers.Add(c);
-            }
-            catch (System.Exception)
-            {
-                return false;
-            }
-            return true;
-        }
+        //    try
+        //    {
+        //        this.Customers.Add(c);
+        //    }
+        //    catch (System.Exception)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
     }
 
 }
