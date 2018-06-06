@@ -3,9 +3,9 @@ import { Http } from '@angular/http';
 import { ShopAppService } from '../shop-app.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Observable } from "rxjs/Observable";
-import { User } from "../../shared/models/user";
-import 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../../shared/models/user';
+import 'rxjs/observable';
 import { Subject } from 'rxjs/Subject';
 import { Location } from '@angular/common';
 
@@ -15,10 +15,9 @@ import { Location } from '@angular/common';
   styleUrls: ['./sign-in.component.css']
 })
 
-
 export class SignInComponent implements OnInit {
   @Input() user: User;
-  customers: Observable<User[]>
+  customers: Observable<User[]>;
 
   private anyErrors: boolean;
   private finished: boolean;
@@ -45,24 +44,5 @@ export class SignInComponent implements OnInit {
         console.log(error);
         return Observable.of<User[]>([]);
       });
-
-    // let apiURL = 'http://localhost:5000/api/';
-
-    // this.http
-    //   .get(apiURL + 'customers' + `/?term=benjamen`).subscribe(e => console.log(e.json()))
-
-    // this.customers = this.customerSearch("test");
-
-    // let subscription = this.searchTerms.subscribe(
-    //   value => this.users = value,
-    //   error => this.anyErrors = true,
-    //   () => this.finished = true);
   }
-
-  //customerSearch(searchString: string): Observable<User[]> {
-  //return this.appService.customerSearch(searchString)///.map(response => response.json()
-  //}
-
-
-
 }

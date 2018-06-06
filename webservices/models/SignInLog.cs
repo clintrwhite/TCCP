@@ -14,6 +14,8 @@ namespace webservices
         // public virtual ICollection<Customer> Customer { get; set; }
         public int id { get; set; }
         public int customerId { get; set; }
+        public List<Customer> customer { get; set; }
+
         public DateTime inTime { get; set; }
         public DateTime outTime { get; set; }
         public int hoursEarned { get; set; }

@@ -2,7 +2,7 @@
 logs
 *.log
 npm-debug.log*
-yarn-debug.log* 
+yarn-debug.log*
 yarn-error.log*
 
 # Runtime data
@@ -106,3 +106,6 @@ _ReSharper*/
 
 # Office Temp Files
 #
+
+
+webservices/obj/project.assets.json

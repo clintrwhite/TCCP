@@ -34,6 +34,7 @@ namespace webservices
                 //.WithMany(p => p.Post)
                 // .HasForeignKey(d => d.BlogId);
             });
+            // modelBuilder.Entity<SignInLog>().HasOne(c=> c.SignInLog).WithMany(c => c.customer);
         }
         //public void test()
         //{
